@@ -1,0 +1,3 @@
+# docker-compose.yml (repo root)
+include:
+  - portainer/docker-compose.yml
