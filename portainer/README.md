@@ -9,6 +9,7 @@ Web UI for managing Docker on this host — start/stop/inspect containers, view 
 
 ## Notes
 
-- Data (users, settings) lives in the external named volume `portainer_data` — this predates the compose setup, so the volume is referenced with `external: true` rather than created fresh. Deleting this stack's container is safe; deleting the volume is not.
+- Data (users, settings) lives in a bind mount at `/opt/docker-data/portainer` — see repo root README for the data storage convention. This was migrated off an external named volume (`portainer_data`, now removed) to bring it in line with the rest of the stack.
+- Runs as root inside the container, so the data directory is root-owned on the host — this is expected, don't `chown` it to your own user.
 - Port `8000` is Portainer's Edge Agent tunnel, used for connecting remote/external Docker environments. Not in use here — safe to leave bound and ignore.
 - Needs access to `/var/run/docker.sock` (bind-mounted) to manage other containers on this host — this is a core requirement, not optional.
