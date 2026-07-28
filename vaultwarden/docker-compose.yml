@@ -6,7 +6,9 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      SIGNUPS_ALLOWED: "true"
     volumes:
       - /opt/docker-data/vaultwarden:/data
     ports:
-      - "127.0.0.1:8000:80"
+      - "8080:80"
