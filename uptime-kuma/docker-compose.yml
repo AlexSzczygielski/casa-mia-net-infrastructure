@@ -1,9 +1,10 @@
+# docker-compose.yml (uptime-kuma)
 services:
   uptime-kuma:
     image: louislam/uptime-kuma:2
     restart: unless-stopped
     volumes:
-      - ./data:/app/data
+      - /opt/docker-data/uptime-kuma:/app/data
     ports:
       # <Host Port>:<Container Port>
       - "3001:3001"
