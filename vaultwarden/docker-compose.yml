@@ -1,14 +1,2 @@
 # docker-compose.yml (vaultwarden)
-services:
-  vaultwarden:
-    image: vaultwarden/server:latest
-    container_name: vaultwarden
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      SIGNUPS_ALLOWED: "true"
-    volumes:
-      - /opt/docker-data/vaultwarden:/data
-    ports:
-      - "8080:80"
+# Abandoned for now - needs proper SSL config

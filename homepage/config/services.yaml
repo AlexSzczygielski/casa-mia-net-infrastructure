@@ -1,0 +1,32 @@
+# services.yaml
+---
+- Infrastructure:
+    - Proxmox VE:
+        href: https://192.168.0.5:8006
+        description: Hypervisor host
+        icon: proxmox.png
+        widget:
+          type: proxmox
+          url: https://192.168.0.5:8006
+          username: root
+          password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
+          node: pve
+
+    - Portainer:
+        href: https://192.168.0.136:9443
+        description: Docker management
+        icon: portainer.png
+        widget:
+          type: portainer
+          url: https://192.168.0.136:9443
+          env: 1
+          key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
+
+    - Uptime Kuma:
+        href: http://192.168.0.136:3002
+        description: Uptime monitoring
+        icon: uptime-kuma.png
+        widget:
+          type: uptimekuma
+          url: http://192.168.0.136:3002
+          slug: your-status-page-slug

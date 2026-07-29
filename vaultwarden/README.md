@@ -1,5 +1,7 @@
 # Vaultwarden
 
+*Abandoned for now - needs proper SSL config*
+
 Self-hosted Bitwarden-compatible password manager — vault for this homelab's service credentials (Portainer, Uptime Kuma, etc.), accessed via browser extension or the web vault.
 
 ## Access
