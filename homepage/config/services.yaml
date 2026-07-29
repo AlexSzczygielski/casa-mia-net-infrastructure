@@ -6,12 +6,13 @@
         description: Hypervisor host
         icon: proxmox.png
         widget:
-        type: proxmox
-        url: https://192.168.0.5:8006
-        username: root@pam!homepage
-        password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
-        node: pve
-        verifySSL: false
+          type: proxmox
+          url: https://192.168.0.5:8006
+          username: root@pam!homepage
+          password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
+          node: pve
+          verifySSL: false
+        
     - Portainer:
         href: https://192.168.0.136:9443
         description: Docker management
@@ -30,3 +31,13 @@
           type: uptimekuma
           url: http://192.168.0.136:3001
           slug: homepage
+    
+    - Pi-hole:
+        href: http://192.168.0.136:8081/admin
+        description: DNS ad-blocking
+        icon: pi-hole.png
+        widget:
+          type: pihole
+          url: http://192.168.0.136:8081
+          version: 6
+          key: "{{HOMEPAGE_VAR_PIHOLE_KEY}}"
