@@ -1,0 +1,9 @@
+# bookmarks.yaml
+---
+- Homelab:
+    - GitHub Repo:
+        - abbr: GH
+          href: https://github.com/AlexSzczygielski/casa-mia-net-infrastructure
+    - Tailscale Admin:
+        - abbr: TS
+          href: https://login.tailscale.com/admin/machines

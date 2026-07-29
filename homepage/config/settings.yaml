@@ -1,0 +1,9 @@
+# settings.yaml
+---
+title: Casa Mia
+theme: dark
+color: slate
+layout:
+  Infrastructure:
+    style: row
+    columns: 3
