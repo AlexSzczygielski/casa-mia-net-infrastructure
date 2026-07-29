@@ -6,8 +6,8 @@ Self-hosted dashboard — a single landing page with links and live status widge
 
 ## Access
 
-- `http://192.168.0.136:3001` (LAN)
-- `http://debian-prox-docker:3001` (Tailscale / MagicDNS)
+- [http://192.168.0.136:3004](http://192.168.0.136:3004) (LAN)
+- [http://debian-prox-docker:3004](http://debian-prox-docker:3004) (Tailscale / MagicDNS)
 
 ## Notes
 

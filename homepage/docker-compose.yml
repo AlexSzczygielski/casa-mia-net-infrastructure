@@ -6,11 +6,11 @@ services:
     env_file:
       - .env
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: "192.168.0.136:3001,debian-prox-docker:3001"
+      HOMEPAGE_ALLOWED_HOSTS: "192.168.0.136:3004,debian-prox-docker:3004"
       PUID: 1000
       PGID: 1000
     ports:
-      - "3001:3000"
+      - "3004:3000"
     volumes:
       - ./config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
