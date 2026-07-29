@@ -9,6 +9,8 @@ services:
       HOMEPAGE_ALLOWED_HOSTS: "192.168.0.136:3004,debian-prox-docker:3004"
       PUID: 1000
       PGID: 1000
+    group_add:
+      - "989"
     ports:
       - "3004:3000"
     volumes:

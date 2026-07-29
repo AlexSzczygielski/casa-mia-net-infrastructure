@@ -6,12 +6,12 @@
         description: Hypervisor host
         icon: proxmox.png
         widget:
-          type: proxmox
-          url: https://192.168.0.5:8006
-          username: root
-          password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
-          node: pve
-
+        type: proxmox
+        url: https://192.168.0.5:8006
+        username: root@pam!homepage
+        password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
+        node: pve
+        verifySSL: false
     - Portainer:
         href: https://192.168.0.136:9443
         description: Docker management
@@ -19,7 +19,7 @@
         widget:
           type: portainer
           url: https://192.168.0.136:9443
-          env: 1
+          env: 3
           key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
 
     - Uptime Kuma:
@@ -29,4 +29,4 @@
         widget:
           type: uptimekuma
           url: http://192.168.0.136:3001
-          slug: your-status-page-slug
+          slug: homepage
