@@ -41,3 +41,19 @@
           url: http://192.168.0.136:8081
           version: 6
           key: "{{HOMEPAGE_VAR_PIHOLE_KEY}}"
+
+- Homelab:
+    - GitHub Network Docs:
+        href: https://github.com/AlexSzczygielski/casa-mia-network
+        description: Homelab docs
+        icon: github.png
+    
+    - GitHub Infra Repo:
+        href: https://github.com/AlexSzczygielski/casa-mia-net-infrastructure
+        description: Docker VM infrastructure config
+        icon: github.png
+
+    - Tailscale Admin:
+        href: https://login.tailscale.com/admin/machines
+        description: Tailnet device management
+        icon: tailscale.png

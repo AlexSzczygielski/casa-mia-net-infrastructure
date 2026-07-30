@@ -1,5 +1,9 @@
 # widgets.yaml
 ---
+- greeting:
+    text_size: xl
+    text: Salve, Olek
+    
 - resources:
     label: Docker VM
     cpu: true
