@@ -2,8 +2,8 @@
 ---
 - Homelab:
     - GitHub Repo:
-        - abbr: GH
+        - icon: github.png
           href: https://github.com/AlexSzczygielski/casa-mia-net-infrastructure
     - Tailscale Admin:
-        - abbr: TS
+        - icon: tailscale.png
           href: https://login.tailscale.com/admin/machines

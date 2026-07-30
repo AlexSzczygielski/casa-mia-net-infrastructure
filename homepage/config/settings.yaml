@@ -1,9 +1,17 @@
 # settings.yaml
 ---
-title: Casa Mia
+title: Casa Mia Net
 theme: dark
 color: slate
+headerStyle: clean
+statusStyle: dot
+useEqualHeights: true
+background:
+  image: /images/background.jpg
+  blur: sm
+  brightness: 55
+  opacity: 45
 layout:
   Infrastructure:
     style: row
-    columns: 3
+    columns: 4

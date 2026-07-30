@@ -11,3 +11,7 @@
     format:
       dateStyle: short
       timeStyle: short
+
+- search:
+    provider: duckduckgo
+    target: _blank
