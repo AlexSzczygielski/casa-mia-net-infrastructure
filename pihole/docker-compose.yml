@@ -9,8 +9,13 @@ services:
       - "8081:80/tcp"   # Web UI — kept off 80 so NPM can claim it later
     environment:
       TZ: "Europe/Warsaw"
+      # FTL Engine Configs
       FTLCONF_webserver_api_password: "${PIHOLE_PASSWORD}"
-      FTLCONF_dns_listeningMode: "ALL"   # required on default bridge network
+      FTLCONF_dns_listeningMode: "ALL"  # required on default bridge network
+      FTLCONF_dns_upstreams: "1.1.1.1;1.0.0.1"
+      FTLCONF_misc_privacylevel: "3"
+      FTLCONF_misc_dnsmasq_lines: |-
+        address=/casa-mia-net.duckdns.org/192.168.0.136
     volumes:
       - /opt/docker-data/pihole:/etc/pihole
     cap_add:
