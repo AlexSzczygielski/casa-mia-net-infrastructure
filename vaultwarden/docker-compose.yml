@@ -1,2 +1,10 @@
 # docker-compose.yml (vaultwarden)
-# Abandoned for now - needs proper SSL config
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://vaultwarden.ts.casamia-net.top"
+    volumes:
+      - /opt/docker-data/vaultwarden:/data/
