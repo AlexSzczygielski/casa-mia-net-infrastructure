@@ -14,10 +14,10 @@ background:
 layout:
   Infrastructure:
     style: row
-    columns: 4
+    columns: 5
   Infrastructure Tailscale:
     style: row
-    columns: 4
+    columns: 5
   Homelab:
     style: row
     columns: 3

@@ -43,6 +43,11 @@
           version: 6
           key: "{{HOMEPAGE_VAR_PIHOLE_KEY}}"
 
+    - Vaultwarden:
+        href: https://vaultwarden.casamia-net.top
+        description: Password manager
+        icon: vaultwarden.png
+
 - Infrastructure Tailscale:
     - Portainer (Tailscale):
         href: https://portainer.ts.casamia-net.top
@@ -58,6 +63,11 @@
         href: https://pihole.ts.casamia-net.top/admin
         description: DNS ad-blocking, away from home
         icon: pi-hole.png
+
+    - Vaultwarden (Tailscale):
+        href: https://vaultwarden.ts.casamia-net.top
+        description: Password manager, away from home
+        icon: vaultwarden.png
 
 - Homelab:
     - GitHub Network Docs:
