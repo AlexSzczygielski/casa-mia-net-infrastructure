@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: "192.168.0.136:3004,debian-prox-docker:3004"
+      HOMEPAGE_ALLOWED_HOSTS: "192.168.0.136:3004,casamia-net.top,ts.casamia-net.top"
       PUID: 1000
       PGID: 1000
     group_add:

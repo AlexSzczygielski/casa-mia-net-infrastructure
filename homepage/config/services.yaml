@@ -12,42 +12,59 @@
           password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
           node: pve
           verifySSL: false
-        
+
     - Portainer:
-        href: https://192.168.0.136:9443
+        href: https://portainer.casamia-net.top
         description: Docker management
         icon: portainer.png
         widget:
           type: portainer
-          url: https://192.168.0.136:9443
+          url: https://portainer:9443
           env: 3
           key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
+          verifySSL: false
 
     - Uptime Kuma:
-        href: http://192.168.0.136:3001
+        href: https://uptime-kuma.casamia-net.top
         description: Uptime monitoring
         icon: uptime-kuma.png
         widget:
           type: uptimekuma
-          url: http://192.168.0.136:3001
+          url: http://uptime-kuma:3001
           slug: homepage
-    
+
     - Pi-hole:
-        href: http://192.168.0.136:8081/admin
+        href: https://pihole.casamia-net.top
         description: DNS ad-blocking
         icon: pi-hole.png
         widget:
           type: pihole
-          url: http://192.168.0.136:8081
+          url: http://pihole:80
           version: 6
           key: "{{HOMEPAGE_VAR_PIHOLE_KEY}}"
+
+- Infrastructure Tailscale:
+    - Portainer (Tailscale):
+        href: https://portainer.ts.casamia-net.top
+        description: Docker management, away from home
+        icon: portainer.png
+
+    - Uptime Kuma (Tailscale):
+        href: https://uptime-kuma.ts.casamia-net.top
+        description: Uptime monitoring, away from home
+        icon: uptime-kuma.png
+
+    - Pi-hole (Tailscale):
+        href: https://pihole.ts.casamia-net.top
+        description: DNS ad-blocking, away from home
+        icon: pi-hole.png
 
 - Homelab:
     - GitHub Network Docs:
         href: https://github.com/AlexSzczygielski/casa-mia-network
         description: Homelab docs
         icon: github.png
-    
+
     - GitHub Infra Repo:
         href: https://github.com/AlexSzczygielski/casa-mia-net-infrastructure
         description: Docker VM infrastructure config
