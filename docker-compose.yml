@@ -1,4 +1,7 @@
 # docker-compose.yml (repo root)
 include:
+  - homepage/docker-compose.yml
+  - caddy/docker-compose.yml
+  - pihole/docker-compose.yml
   - portainer/docker-compose.yml
   - uptime-kuma/docker-compose.yml

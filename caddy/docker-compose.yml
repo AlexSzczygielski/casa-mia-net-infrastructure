@@ -1,0 +1,15 @@
+# docker-compose.yml (caddy)
+services:
+  caddy:
+    image: ghcr.io/caddybuilds/caddy-cloudflare:latest
+    container_name: caddy
+    restart: unless-stopped
+    environment:
+      - CLOUDFLARE_API_TOKEN=${CLOUDFLARE_API_TOKEN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /opt/docker-data/caddy/data:/data
+      - /opt/docker-data/caddy/config:/config
+    ports:
+      - "80:80"
+      - "443:443"

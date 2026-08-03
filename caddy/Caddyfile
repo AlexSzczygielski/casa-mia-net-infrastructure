@@ -1,0 +1,38 @@
+{
+	acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+}
+(cloudflare-dns01) {
+	tls {
+		dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+		resolvers 1.1.1.1
+	}
+}
+
+vaultwarden.casamia-net.top, vaultwarden.ts.casamia-net.top {
+	import cloudflare-dns01
+	reverse_proxy vaultwarden:80
+}
+
+pihole.casamia-net.top, pihole.ts.casamia-net.top {
+	import cloudflare-dns01
+	reverse_proxy pihole:80
+}
+
+uptime-kuma.casamia-net.top, uptime-kuma.ts.casamia-net.top {
+	import cloudflare-dns01
+	reverse_proxy uptime-kuma:3001
+}
+
+portainer.casamia-net.top, portainer.ts.casamia-net.top {
+	import cloudflare-dns01
+	reverse_proxy https://portainer:9443 {
+		transport http {
+			tls_insecure_skip_verify
+		}
+	}
+}
+
+casamia-net.top, *.casamia-net.top, ts.casamia-net.top, *.ts.casamia-net.top {
+	import cloudflare-dns01
+	reverse_proxy homepage:3000
+}
