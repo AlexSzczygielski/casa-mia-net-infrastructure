@@ -15,12 +15,12 @@ Two-domain split for LAN vs. Tailscale access (not true split-horizon — see tr
 
 | Pattern | Resolves to |
 |---|---|
-| `<service>.casa-mia-net.duckdns.org` | LAN IP (`192.168.0.136`) |
-| `<service>.ts.casa-mia-net.duckdns.org` | Docker VM's Tailscale IP |
+| `<service>.casamia-net.top` | LAN IP (`192.168.0.136`) |
+| `<service>.ts.casamia-net.top` | Docker VM's Tailscale IP |
 
 Set via `FTLCONF_misc_dnsmasq_lines` — `dnsmasq` resolves overlapping wildcards
-by most-specific-domain-wins, so `ts.casa-mia-net.duckdns.org` and everything
-under it correctly takes precedence over the base domain's wildcard.
+by most-specific-domain-wins, so `ts.casamia-net.top` and everything under it
+correctly takes precedence over the base domain's wildcard.
 
 > [!NOTE]
 > This is two fixed domains, not interface-aware split-horizon — a client
@@ -33,15 +33,17 @@ under it correctly takes precedence over the base domain's wildcard.
 > `tailscale0` interfaces, so interface-based resolution can't work under the
 > current bridge + port-mapping setup.
 
-Certificates covering these must be requested as three names on one NPM
-Let's Encrypt (DNS-01) request: `casa-mia-net.duckdns.org`,
-`*.casa-mia-net.duckdns.org`, `*.ts.casa-mia-net.duckdns.org` — a wildcard
-only covers one label of depth, so `*.casa-mia-net.duckdns.org` does **not**
-cover `foo.ts.casa-mia-net.duckdns.org`.
+Certificates covering these are requested as three names in one DNS-01
+request via Cloudflare (registrar: Porkbun, DNS host: Cloudflare):
+`casamia-net.top`, `*.casamia-net.top`, `*.ts.casamia-net.top` — a wildcard
+only covers one label of depth, so `*.casamia-net.top` does **not** cover
+`foo.ts.casamia-net.top`. Issuance and renewal are handled by Caddy directly
+(custom build with the Cloudflare DNS module) — see that service's README
+for implementation details.
 
 ## Notes
 
-- Web UI is bound to host port `8081`, not the default `80/443` — those are reserved for Nginx Proxy Manager. Pi-hole's own HTTPS (443) is unused here.
+- Web UI is bound to host port `8081`, not the default `80/443` — those are reserved for Caddy. Pi-hole's own HTTPS (443) is unused here.
 - `FTLCONF_dns_listeningMode: ALL` is required — Docker's bridge network only exposes the container's own virtual interface to Pi-hole, so it can't tell which host interface a query really arrived on, and the safer `LOCAL` mode (interface/subnet-based filtering) doesn't work reliably as a result. This is safe specifically because the ISP router can't port-forward (CGNAT/DS-Lite) — port 53 is only ever reachable from LAN and the tailnet, never the public internet.
 - Upstream DNS pinned to Cloudflare (`1.1.1.1`, `1.0.0.1`) via `FTLCONF_dns_upstreams` — not left as image default.
 - Privacy level is set to **3 (Anonymous mode)** — Pi-hole does not log which domains or clients made which queries, only aggregate/anonymous stats. Blocking is unaffected by this; it only controls history/statistics storage.

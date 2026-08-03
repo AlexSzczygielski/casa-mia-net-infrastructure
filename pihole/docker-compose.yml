@@ -16,8 +16,8 @@ services:
       FTLCONF_misc_privacylevel: "3" # No logging
       # Custom domain DNS Wildcards
       FTLCONF_misc_dnsmasq_lines: |-
-        address=/casa-mia-net.duckdns.org/192.168.0.136
-        address=/ts.casa-mia-net.duckdns.org/${DOCKER_VM_TAILSCALE_IP}
+        address=/casamia-net.top/192.168.0.136
+        address=/ts.casamia-net.top/${DOCKER_VM_TAILSCALE_IP}
     volumes:
       - /opt/docker-data/pihole:/etc/pihole
     cap_add:
