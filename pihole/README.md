@@ -33,13 +33,12 @@ correctly takes precedence over the base domain's wildcard.
 > `tailscale0` interfaces, so interface-based resolution can't work under the
 > current bridge + port-mapping setup.
 
-Certificates covering these are requested as three names in one DNS-01
-request via Cloudflare (registrar: Porkbun, DNS host: Cloudflare):
-`casamia-net.top`, `*.casamia-net.top`, `*.ts.casamia-net.top` — a wildcard
-only covers one label of depth, so `*.casamia-net.top` does **not** cover
-`foo.ts.casamia-net.top`. Issuance and renewal are handled by Caddy directly
-(custom build with the Cloudflare DNS module) — see that service's README
-for implementation details.
+Certificates covering these are handled entirely by Caddy via Cloudflare
+DNS-01 (registrar: Porkbun, DNS host: Cloudflare) — a wildcard only covers
+one label of depth, so `*.casamia-net.top` does **not** cover
+`foo.ts.casamia-net.top`; this is why the wildcard split above exists as two
+separate patterns rather than one. See [Caddy's README](../caddy/README.md)
+for how certificates are actually issued and structured.
 
 ## Notes
 
