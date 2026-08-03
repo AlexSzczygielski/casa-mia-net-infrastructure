@@ -1,6 +1,6 @@
 # Casa Mia Network Infrastructure
 
-This repository holds the infrastructure configuration for the Docker VM (`192.168.0.136`), part of the [Casa Mia Network](https://github.com/AlexSzczygielski/casa-mia-network) homelab.
+This repository holds the infrastructure configuration for the Docker VM (`192.168.0.136`), part of the [Casa Mia Network](https://github.com/AlexSzczygielski/casa-mia-network) homelab — see that repo for network topology, IP allocation, and node-level architecture. This repo covers what actually *runs* on the Docker VM specifically.
 
 ## Where this runs
 
@@ -15,6 +15,16 @@ architecture-beta
 
     proxmox:R -- L:dockervm
 ```
+
+## Configuration philosophy
+
+This repository favors declarative, file-based configuration over
+imperative changes made through a service's web UI. Configuration is
+version-controlled and reproducible from a clean checkout; where a
+service's UI is the only viable mechanism for a given setting, that
+exception is documented explicitly in the service's own README rather than
+treated as the norm. Secrets are the sole deliberate exception to this
+principle — see the `.env` convention below.
 
 ## Repo structure
 
@@ -39,36 +49,24 @@ Any service with persistent data uses a **bind mount**, rooted at:
 
 Bind mounts under one known root mean the whole stack's data can be backed up from a single path (`/opt/docker-data`).
 
-## Adding a new service:
-
-1. Check the image's docs (Docker Hub page / GitHub README) for which internal path it writes persistent data to (e.g. Uptime Kuma → `/app/data`, Postgres → `/var/lib/postgresql/data`). Also check whether the image runs as root or a specific non-root user (often documented as a UID, or via `PUID`/`PGID` env vars) — this determines whether step 2 is needed.
-2. **If the image runs as root, or doesn't care about ownership:** skip ahead — Docker will auto-create `/opt/docker-data/<service-name>` on first start, owned by root. This is fine for services like Portainer.
-   **If the image runs as a non-root user:** pre-create and set ownership before first start, so the container isn't fixing permission errors on data it already partially wrote:
-    ```bash
-    sudo mkdir -p /opt/docker-data/<service-name>
-    ```
-    ```bash
-    sudo chown -R <uid>:<gid> /opt/docker-data/<service-name>
-    ```
-3. Mount it in the service's `docker-compose.yml`:
-    ```yaml
-    volumes:
-        - /opt/docker-data/<service-name>:<path the image expects>
-    ```
-4. Do **not** add a top-level `volumes:` block for a named volume — bind mounts only.
-5. If the container logs permission errors on startup despite the above, double check the UID/GID against the image's docs — some images expect ownership to match a specific number, not just "non-root."
-
-**Permissions note:** Docker will silently create the host directory as root-owned if it doesn't already exist. Most containers are fine with this or run as root internally (e.g. Portainer). If a container logs permission errors on startup, either `chown` the directory to match the UID the image's docs specify, or check for a `PUID`/`PGID` environment variable (common on LinkedIn-Arr/LSIO-style images).
-
 ## Adding a new service
 
-1. Add a new folder with its own `docker-compose.yml`
-Start `.yml` with a comment denoting what service this is
+1. Add a new folder with its own `docker-compose.yml`. Start the file with a comment denoting what service this is:
     ```
     # docker-compose.yml (service-name)
     ```
-2. Set up its data directory per the [Data storage convention](#data-storage-convention) above, if it has persistent data
-3. Add a line for it under `include:` in the root `docker-compose.yml`
+2. **If it has persistent data:** check the image's docs for which internal path it writes to (e.g. Uptime Kuma → `/app/data`, Postgres → `/var/lib/postgresql/data`), and whether it runs as root or a specific non-root user (often a UID, or `PUID`/`PGID` env vars).
+   - **Root, or doesn't care about ownership:** nothing to pre-create — Docker auto-creates `/opt/docker-data/<service-name>` on first start, owned by root. Fine for services like Portainer.
+   - **Non-root user:** pre-create and set ownership *before* first start, so the container isn't fixing permission errors on data it already partially wrote:
+     ```bash
+     sudo mkdir -p /opt/docker-data/<service-name>
+     sudo chown -R <uid>:<gid> /opt/docker-data/<service-name>
+     ```
+   - Mount it per the [Data storage convention](#data-storage-convention) above. No top-level `volumes:` block for named volumes — bind mounts only.
+   - If the container logs permission errors anyway, double check the UID/GID against the image's docs — some expect ownership to match a specific number, not just "any non-root."
+3. **If it needs to be reachable via a domain**: add a site block to [Caddy's Caddyfile](caddy/README.md) — `<service>.casamia-net.top` for LAN, `<service>.ts.casamia-net.top` for Tailscale, proxying to the service's **container-internal** port (not its host-published one, if it has one — see [Caddy's README](caddy/README.md) for more info).
+   - **No Pi-hole change needed** — the existing wildcard already resolves any subdomain under both domains automatically. Pi-hole only needs touching if the domain structure itself changes, not per new service.
+4. Add a line for the new service under `include:` in the root `docker-compose.yml`.
 
 ## Deploying
 
@@ -80,3 +78,19 @@ docker compose up -d
 ```
 
 This is safe to re-run anytime — Compose only recreates a container if its config actually changed, so this doubles as the update command.
+
+> [!IMPORTANT]
+> **Always deploy from the root, not from inside a service folder.** Services
+> reach each other by container name over Compose's shared default network
+> (e.g. Caddy proxying to `vaultwarden:80`) — that network only exists
+> because everything is brought up as one project via the root `include:`.
+> Running `docker compose up -d` from inside a single service folder creates
+> a separate, isolated project instead, breaking name resolution for every
+> other service until it's redeployed from root.
+>
+> Redeploying just one service is still fine *from the root*:
+> ```bash
+> docker compose up -d --force-recreate <service>
+> ```
+> Only recreates that one container — everything else, and the shared
+> network, stays untouched.
