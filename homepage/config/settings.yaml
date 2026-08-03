@@ -15,6 +15,9 @@ layout:
   Infrastructure:
     style: row
     columns: 4
+  Infrastructure Tailscale:
+    style: row
+    columns: 4
   Homelab:
     style: row
     columns: 3
