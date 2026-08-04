@@ -6,3 +6,4 @@ include:
   - portainer/docker-compose.yml
   - uptime-kuma/docker-compose.yml
   - vaultwarden/docker-compose.yml
+  - homeassistant/docker-compose.yml

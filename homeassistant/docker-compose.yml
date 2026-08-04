@@ -1,0 +1,13 @@
+# docker-compose.yml (homeassistant)
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    volumes:
+      - /opt/docker-data/homeassistant/config:/config
+      - ./config/configuration.yaml:/config/configuration.yaml
+      - ./config/secrets.yaml:/config/secrets.yaml
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Warsaw
