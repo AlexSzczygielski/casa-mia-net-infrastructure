@@ -2,6 +2,8 @@
 services:
   portainer:
     image: portainer/portainer-ce:lts
+    environment:
+      - TRUSTED_ORIGINS=portainer.casamia-net.top,portainer.ts.casamia-net.top
     container_name: portainer
     restart: unless-stopped
     ports:
