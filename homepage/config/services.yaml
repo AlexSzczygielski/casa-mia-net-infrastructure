@@ -48,6 +48,15 @@
         description: Password manager
         icon: vaultwarden.png
 
+    - Home Assistant:
+        href: https://homeassistant.casamia-net.top
+        description: Smart home automation
+        icon: home-assistant.png
+        widget:
+          type: homeassistant
+          url: http://homeassistant:8123
+          key: "{{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}"
+
 - Infrastructure Tailscale:
     - Portainer (Tailscale):
         href: https://portainer.ts.casamia-net.top
@@ -68,6 +77,11 @@
         href: https://vaultwarden.ts.casamia-net.top
         description: Password manager, away from home
         icon: vaultwarden.png
+
+    - Home Assistant (Tailscale):
+        href: https://homeassistant.ts.casamia-net.top
+        description: Smart home automation, away from home
+        icon: home-assistant.png
 
 - Homelab:
     - GitHub Network Docs:
