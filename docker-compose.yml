@@ -7,3 +7,4 @@ include:
   - uptime-kuma/docker-compose.yml
   - vaultwarden/docker-compose.yml
   - homeassistant/docker-compose.yml
+  - flights-excel/docker-compose.yml
