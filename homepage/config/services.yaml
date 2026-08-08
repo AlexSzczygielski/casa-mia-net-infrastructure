@@ -57,6 +57,11 @@
           url: http://homeassistant:8123
           key: "{{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}"
 
+    - Flights to Excel:
+        href: https://flights.casamia-net.top
+        description: Flight offer scraper for Excel
+        icon: mdi-airplane-takeoff
+
 - Infrastructure Tailscale:
     - Portainer (Tailscale):
         href: https://portainer.ts.casamia-net.top
@@ -82,6 +87,11 @@
         href: https://homeassistant.ts.casamia-net.top
         description: Smart home automation, away from home
         icon: home-assistant.png
+
+    - Flights to Excel (Tailscale):
+        href: https://flights.ts.casamia-net.top
+        description: Flight offer scraper for Excel, away from home
+        icon: mdi-airplane-takeoff
 
 - Homelab:
     - GitHub Network Docs:
