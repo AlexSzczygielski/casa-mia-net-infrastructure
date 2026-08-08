@@ -37,6 +37,14 @@ homeassistant.casamia-net.top, homeassistant.ts.casamia-net.top {
 	reverse_proxy homeassistant:8123
 }
 
+flights.casamia-net.top {
+    reverse_proxy flights-excel:80
+}
+
+flights.ts.casamia-net.top {
+    reverse_proxy flights-excel:80
+}
+
 casamia-net.top, *.casamia-net.top, ts.casamia-net.top, *.ts.casamia-net.top {
 	import cloudflare-dns01
 	reverse_proxy homepage:3000

@@ -1,0 +1,7 @@
+services:
+  flights-excel:
+    image: nginx:alpine
+    container_name: flights-excel
+    restart: unless-stopped
+    volumes:
+      - /opt/docker-data/flights-excel/site:/usr/share/nginx/html:ro
