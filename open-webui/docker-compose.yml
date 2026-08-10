@@ -6,5 +6,6 @@ services:
     restart: unless-stopped
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
+      - AIOHTTP_CLIENT_TIMEOUT=600
     volumes:
       - /opt/docker-data/open-webui:/app/backend/data

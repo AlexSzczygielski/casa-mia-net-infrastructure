@@ -70,6 +70,11 @@
           url: http://homeassistant:8123
           key: "{{HOMEPAGE_VAR_HOMEASSISTANT_KEY}}"
 
+    - Open WebUI:
+        href: https://open-webui.casamia-net.top
+        description: Local LLM chat interface
+        icon: ollama.png
+
     - Flights to Excel:
         href: https://flights.casamia-net.top
         description: Flight offer scraper for Excel
@@ -105,6 +110,11 @@
         href: https://homeassistant.ts.casamia-net.top
         description: Smart home automation, away from home
         icon: home-assistant.png
+
+    - Open WebUI (Tailscale):
+        href: https://open-webui.ts.casamia-net.top
+        description: Local LLM chat interface, away from home
+        icon: ollama.png
 
     - Flights to Excel (Tailscale):
         href: https://flights.ts.casamia-net.top
