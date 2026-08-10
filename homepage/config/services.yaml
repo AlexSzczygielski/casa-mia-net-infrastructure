@@ -33,6 +33,17 @@
           url: http://uptime-kuma:3001
           slug: homepage
 
+    - Beszel:
+        href: https://beszel.casamia-net.top
+        description: Server & temperature monitoring
+        icon: beszel.png
+        widget:
+          type: beszel
+          url: http://beszel:8090
+          username: "{{HOMEPAGE_VAR_BESZEL_USERNAME}}"
+          password: "{{HOMEPAGE_VAR_BESZEL_PASSWORD}}"
+          version: 2
+
     - Pi-hole:
         href: https://pihole.casamia-net.top/admin
         description: DNS ad-blocking
@@ -72,6 +83,11 @@
         href: https://uptime-kuma.ts.casamia-net.top
         description: Uptime monitoring, away from home
         icon: uptime-kuma.png
+
+    - Beszel (Tailscale):
+        href: https://beszel.ts.casamia-net.top
+        description: Server & temperature monitoring, away from home
+        icon: beszel.png
 
     - Pi-hole (Tailscale):
         href: https://pihole.ts.casamia-net.top/admin
