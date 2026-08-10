@@ -42,7 +42,9 @@
           url: http://beszel:8090
           username: "{{HOMEPAGE_VAR_BESZEL_USERNAME}}"
           password: "{{HOMEPAGE_VAR_BESZEL_PASSWORD}}"
+          systemId: pve-g1-mini
           version: 2
+          fields: ["cpu", "memory", "disk", "network"]
 
     - Pi-hole:
         href: https://pihole.casamia-net.top/admin
