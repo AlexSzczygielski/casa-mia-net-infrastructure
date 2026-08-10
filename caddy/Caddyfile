@@ -55,6 +55,16 @@ flights.ts.casamia-net.top {
     reverse_proxy flights-excel:80
 }
 
+open-webui.casamia-net.top {
+	import cloudflare-dns01
+    reverse_proxy open-webui:8080
+}
+
+open-webui.ts.casamia-net.top {
+	import cloudflare-dns01
+    reverse_proxy open-webui:8080
+}
+
 casamia-net.top, *.casamia-net.top, ts.casamia-net.top, *.ts.casamia-net.top {
 	import cloudflare-dns01
 	reverse_proxy homepage:3000

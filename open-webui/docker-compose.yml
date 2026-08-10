@@ -1,0 +1,10 @@
+# docker-compose.yml (open-webui)
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    restart: unless-stopped
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - /opt/docker-data/open-webui:/app/backend/data

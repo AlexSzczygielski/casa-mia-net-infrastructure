@@ -1,0 +1,8 @@
+# docker-compose.yml (ollama)
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    volumes:
+      - /opt/docker-data/ollama:/root/.ollama
