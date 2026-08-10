@@ -8,3 +8,4 @@ include:
   - vaultwarden/docker-compose.yml
   - homeassistant/docker-compose.yml
   - flights-excel/docker-compose.yml
+  - beszel/docker-compose.yml

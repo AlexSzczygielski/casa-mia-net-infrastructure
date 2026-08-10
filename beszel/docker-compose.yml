@@ -1,0 +1,12 @@
+# docker-compose.yml (beszel)
+services:
+  beszel:
+    image: henrygd/beszel
+    container_name: beszel
+    restart: unless-stopped
+    environment:
+      - APP_URL=https://beszel.casamia-net.top
+    ports:
+      - 8090:8090
+    volumes:
+      - /opt/docker-data/beszel:/beszel_data
