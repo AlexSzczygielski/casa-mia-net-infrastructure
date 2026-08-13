@@ -2,6 +2,8 @@
 
 This repository holds the infrastructure configuration for the Docker VM (`192.168.0.136`), part of the [Casa Mia Network](https://github.com/AlexSzczygielski/casa-mia-network) homelab — see that repo for network topology, IP allocation, and node-level architecture. This repo covers what actually *runs* on the Docker VM specifically.
 
+**[Online docs](https://alexszczygielski.github.io/casa-mia-net-infrastructure/)** — same content as the READMEs in this repo, published via GitHub Pages.
+
 ## Where this runs
 
 Everything in this repo runs in the Docker VM, which itself is a VM hosted on the Proxmox node.

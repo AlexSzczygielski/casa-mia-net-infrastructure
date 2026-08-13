@@ -1,4 +1,5 @@
 # Ollama
+**Currently not deployed** — pulled out of the root `docker-compose.yml` for restructuring; the notes below describe the last working setup.
 
 Local LLM inference server — runs quantized language models (Llama, Qwen, etc.) for testing, with no data leaving the homelab. Backs Open WebUI as its only client.
 

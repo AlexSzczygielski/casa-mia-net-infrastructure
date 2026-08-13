@@ -1,4 +1,5 @@
 # Open WebUI
+**Currently not deployed** — pulled out of the root `docker-compose.yml` alongside Ollama for restructuring; the notes below describe the last working setup. Its Caddyfile blocks are still present but currently dangling (no container to resolve to) — see [Caddy's README](https://github.com/AlexSzczygielski/casa-mia-net-infrastructure/blob/main/caddy/README.md).
 
 Browser-based chat interface for Ollama — model picker, chat history, per-model tool/capability config. The only client currently talking to Ollama.
 
@@ -6,8 +7,14 @@ Browser-based chat interface for Ollama — model picker, chat history, per-mode
 
 ## Access
 
-- `https://open-webui.casamia-net.top` (LAN)
-- `https://open-webui.ts.casamia-net.top` (Tailscale)
+- LAN:
+  ```
+  https://open-webui.casamia-net.top
+  ```
+- Tailscale:
+  ```
+  https://open-webui.ts.casamia-net.top
+  ```
 
 ## Notes
 

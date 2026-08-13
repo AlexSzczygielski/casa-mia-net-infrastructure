@@ -6,8 +6,22 @@ Network-wide DNS sinkhole — blocks ads and trackers by refusing to resolve kno
 
 ## Access
 
-- DNS: `192.168.0.136:53`
-- Web UI: [http://192.168.0.136:8081/admin](http://192.168.0.136:8081/admin)
+- DNS:
+  ```
+  192.168.0.136:53
+  ```
+- Web UI (direct):
+  ```
+  http://192.168.0.136:8081/admin
+  ```
+- Web UI (via Caddy, LAN):
+  ```
+  https://pihole.casamia-net.top
+  ```
+- Web UI (via Caddy, Tailscale):
+  ```
+  https://pihole.ts.casamia-net.top
+  ```
 
 ## Custom domains
 

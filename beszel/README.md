@@ -1,11 +1,21 @@
 # Beszel
 
-Lightweight server monitoring — CPU, memory, disk, network, and temperature history with configurable alerts, across every host and VM in this network from one dashboard.
+Lightweight server monitoring — CPU, memory, disk, network, and temperature history with configurable alerts.
 
 ## Access
 
-- `http://192.168.0.136:8090` (direct)
-- `https://beszel.casamia-net.top` / `https://beszel.ts.casamia-net.top` (via Caddy)
+- Direct:
+  ```
+  http://192.168.0.136:8090
+  ```
+- Via Caddy, LAN:
+  ```
+  https://beszel.casamia-net.top
+  ```
+- Via Caddy, Tailscale:
+  ```
+  https://beszel.ts.casamia-net.top
+  ```
 
 ## Notes
 

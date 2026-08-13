@@ -3,6 +3,19 @@
 Smart home automation platform. Bridge-networked, proxied through Caddy like
 every other service — no host networking, no auto-discovery.
 
+## Access
+
+- LAN:
+  ```
+  https://homeassistant.casamia-net.top
+  ```
+- Tailscale:
+  ```
+  https://homeassistant.ts.casamia-net.top
+  ```
+
+No host port is published — reachable only through Caddy on the shared Compose network, not directly by IP.
+
 ## Configuration
 
 Split between two layers, not fully declarative:
