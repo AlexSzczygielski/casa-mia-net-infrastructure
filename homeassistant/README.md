@@ -3,6 +3,8 @@
 Smart home automation platform. Bridge-networked, proxied through Caddy like
 every other service — no host networking, no auto-discovery.
 
+[Home Assistant Docs](https://www.home-assistant.io/docs/)
+
 ## Access
 
 - LAN:

@@ -2,6 +2,8 @@
 
 Lightweight server monitoring — CPU, memory, disk, network, and temperature history with configurable alerts.
 
+[Beszel Docs](https://beszel.dev)
+
 ## Access
 
 - Direct:

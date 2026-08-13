@@ -2,6 +2,8 @@
 
 Web UI for managing Docker on this host — start/stop/inspect containers, view logs, manage volumes and images, without typing raw `docker` commands for everyday checks.
 
+[Portainer Docs](https://docs.portainer.io)
+
 ## Access
 
 - Direct:
