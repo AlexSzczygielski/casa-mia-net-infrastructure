@@ -64,7 +64,7 @@ Bind mounts under one known root mean the whole stack's data can be backed up fr
      ```
    - Mount it per the [Data storage convention](#data-storage-convention) above. No top-level `volumes:` block for named volumes — bind mounts only.
    - If the container logs permission errors anyway, double check the UID/GID against the image's docs — some expect ownership to match a specific number, not just "any non-root."
-3. **If it needs to be reachable via a domain**: add a site block to [Caddy's Caddyfile](caddy/README.md) — `<service>.casamia-net.top` for LAN, `<service>.ts.casamia-net.top` for Tailscale, proxying to the service's **container-internal** port (not its host-published one, if it has one — see [Caddy's README](caddy/README.md) for more info).
+3. **If it needs to be reachable via a domain**: add a site block to [Caddy's Caddyfile](https://github.com/AlexSzczygielski/casa-mia-net-infrastructure/blob/main/caddy/README.md) — `<service>.casamia-net.top` for LAN, `<service>.ts.casamia-net.top` for Tailscale, proxying to the service's **container-internal** port (not its host-published one, if it has one — see [Caddy's README](https://github.com/AlexSzczygielski/casa-mia-net-infrastructure/blob/main/caddy/README.md) for more info).
    - **No Pi-hole change needed** — the existing wildcard already resolves any subdomain under both domains automatically. Pi-hole only needs touching if the domain structure itself changes, not per new service.
 4. Add a line for the new service under `include:` in the root `docker-compose.yml`.
 
