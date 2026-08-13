@@ -37,7 +37,7 @@ Certificates covering these are handled entirely by Caddy via Cloudflare
 DNS-01 (registrar: Porkbun, DNS host: Cloudflare) — a wildcard only covers
 one label of depth, so `*.casamia-net.top` does **not** cover
 `foo.ts.casamia-net.top`; this is why the wildcard split above exists as two
-separate patterns rather than one. See [Caddy's README](../caddy/README.md)
+separate patterns rather than one. See [Caddy's README](https://github.com/AlexSzczygielski/casa-mia-net-infrastructure/blob/main/caddy/README.md)
 for how certificates are actually issued and structured.
 
 ## Notes

@@ -30,7 +30,7 @@ should be needed, since nothing here is meant to be reached through
 Cloudflare's public DNS.
 
 Two-domain LAN/Tailscale split per service, resolved by Pi-hole (see
-[Pi-hole's README](../pihole/README.md)) — Caddy itself doesn't care which
+[Pi-hole's README](https://github.com/AlexSzczygielski/casa-mia-net-infrastructure/blob/main/pihole/README.md)) — Caddy itself doesn't care which
 domain a request came in on beyond routing, both just need a site block:
 
 | Service | Local | Tailscale | Backend |
