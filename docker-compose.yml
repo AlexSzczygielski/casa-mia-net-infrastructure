@@ -9,5 +9,3 @@ include:
   - homeassistant/docker-compose.yml
   - flights-excel/docker-compose.yml
   - beszel/docker-compose.yml
-  - ollama/docker-compose.yml
-  - open-webui/docker-compose.yml
