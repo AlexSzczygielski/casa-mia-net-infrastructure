@@ -2,16 +2,15 @@
 ---
 - Infrastructure:
     - Proxmox VE:
-        href: https://192.168.0.5:8006
+        href: https://proxmox.casamia-net.top
         description: Hypervisor host
         icon: proxmox.png
         widget:
           type: proxmox
-          url: https://192.168.0.5:8006
+          url: https://proxmox.casamia-net.top
           username: root@pam!homepage
           password: "{{HOMEPAGE_VAR_PROXMOX_TOKEN}}"
           node: pve
-          verifySSL: false
 
     - Portainer:
         href: https://portainer.casamia-net.top
@@ -81,6 +80,10 @@
         icon: mdi-airplane-takeoff
 
 - Infrastructure Tailscale:
+    - Proxmox VE (Tailscale):
+        href: https://proxmox.ts.casamia-net.top
+        description: Hypervisor host, away from home
+        icon: proxmox.png
     - Portainer (Tailscale):
         href: https://portainer.ts.casamia-net.top
         description: Docker management, away from home

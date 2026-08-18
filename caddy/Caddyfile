@@ -8,6 +8,15 @@
 	}
 }
 
+proxmox.casamia-net.top, proxmox.ts.casamia-net.top {
+import cloudflare-dns01
+    reverse_proxy https://192.168.0.5:8006 {
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}
+
 vaultwarden.casamia-net.top, vaultwarden.ts.casamia-net.top {
 	import cloudflare-dns01
 	reverse_proxy vaultwarden:80
